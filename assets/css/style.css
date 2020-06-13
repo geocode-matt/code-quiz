@@ -1,6 +1,6 @@
 :root {
     --primary-color: whitesmoke;
-    --secondary-color: rgb(156, 19, 156);
+    --secondary-color: rgb(112, 12, 112);
     --tertiary-color: black;
 }
 
@@ -10,6 +10,8 @@
     margin: 0;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+
 
 
 
@@ -23,6 +25,12 @@ body {
     background-color: var(--primary-color);
 }
 
+header h3 {
+    color: var(--tertiary-color);
+    float: right;
+}
+
+
 
 
 /* ELEMENT BY ID STYLING */
@@ -31,14 +39,9 @@ body {
     float: left;    
 }
 
-#timer {
-    color: var(--tertiary-color);
-    float: right;
-}
-
 #mainContent {
     width: 100%;
-    height: 300px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,4 +63,30 @@ body {
 
 #quizSecondary {
     text-align: center;
+}
+
+#startBtn {
+    font-size: 14px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: hidden;
+}
+
+
+
+
+/* ELEMENT BY CLASS STYLING */
+.answerButtons {
+    list-style: none;
+    /* font-size: 14px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    height: 40px;
+    width: 100px;
+    border-radius: 10px;
+    border: hidden;
+    align-items: flex-start; */
 }

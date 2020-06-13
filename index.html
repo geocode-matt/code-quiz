@@ -10,16 +10,24 @@
 
     <header>
         <h3 id="highScoresLink">View High Scores</h3>
-        <h3 id="timer">Timer</h3>
+        <h3>Time: <span id="timer"></span></h3>
     </header>
 
     <section id="mainContent">
         <div id="quizPrimary">
-            <h2>Coding Quiz Challenge</h2>
+            <h2 class="textPrimary">Coding Quiz Challenge</h2>
             <br><br>
-            <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <p class="textSecondary">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+
+            <ul>
+                <li class="answerButtons"></li>
+                <li class="answerButtons"></li>
+                <li class="answerButtons"></li>
+                <li class="answerButtons"></li>
+            </ul>
+
             <br><br>
-            <button>Start Quiz</button>
+            <button id="startBtn">Start Quiz</button>
         </div>
     </section>
 

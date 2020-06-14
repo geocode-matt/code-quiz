@@ -58,7 +58,7 @@ body.wrong {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 150px 350px 50px 350px;
+    padding: 20px 20px 20px 20px;
 }
 
 #secondaryContent {
@@ -67,15 +67,15 @@ body.wrong {
     display: flex;
     align-content: center;
     justify-content: center;
-    padding: 50px 350px 50px 350px;
+    padding: 20px 20px 20px 20px;
 }
 
 #quizPrimary {
     text-align: center;
-    display: flex;
+    display: inline-block;
     height: 800px;
     /* max-width: 80%; */
-    width: 100%;
+    width: 1000px;
     padding: 20px 20px 20px 20px;
     flex-wrap: wrap;
     flex-direction: column;
@@ -96,6 +96,7 @@ body.wrong {
     padding: 5px 10px;
     outline: none;
 }
+
 
 
 /* ELEMENT BY CLASS STYLING */

@@ -50,11 +50,16 @@ var questions = [
         ]
     }
 ]
+var timerEl = document.getElementById("timer");
 var randomOrder
 var questionIndex
 var questionEl = document.getElementById("question");
 var answerButtonsEl = document.getElementById("answer-buttons");
 var score = 0;
+var initialsButton = document.createElement("button");
+var initialsBlank = document.createElement('input');
+var username = document.getElementById("initials-blank").value;
+
 
 
 
@@ -116,6 +121,8 @@ function pickAnswer(e) {
     if (correct) {
         score++;
     } else {
+        timerEl = timer - 10;
+        timerEl.textContent = timer;
     }
     if (randomOrder.length > questionIndex + 1) {
         questionIndex++
@@ -144,14 +151,35 @@ function clearStatusClass(element) {
 function allDone() {
     answerButtonsEl.classList.add("hide");
     question.classList.add("hide");
+    
     var allDoneText = document.createElement("h2");
     var h2 = document.getElementById("h2");
     allDoneText.textContent = "All Done!";
     h2.appendChild(allDoneText);
+    
     var scoreText = document.createElement("h3");
     var h3 = document.getElementById("h3");
     scoreText.textContent = 'Your final score is ' + ((score/5) *100) + '%.';
     h3.appendChild(scoreText);
+
+    var blank = document.getElementById("initials-blank");
+    blank.appendChild(initialsBlank);
+    initialsBlank.setAttribute("style", "display: inline-block;")
+
+    var button = document.getElementById("initials-btn");
+    button.appendChild(initialsButton);
+    initialsButton.textContent = "Submit";
+    initialsButton.setAttribute("style", "float: right;")
+
+    var initialsText = document.createElement("label");
+    var label = document.getElementById("initials-label");
+    label.appendChild(initialsText);
+    initialsText.textContent = "Enter Intiails:";
+}
+
+function pushHighScores() {
+    localStorage.setItem('username', initialsBlank.value);
+    localStorage.setItem('score', score/5*100 + '%');
 }
 
 
@@ -188,3 +216,4 @@ function allDone() {
 
 // EVENT LISTENERS
 startBtnEl.addEventListener("click", startQuiz);
+initialsButton.addEventListener("click", pushHighScores);

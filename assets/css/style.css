@@ -8,7 +8,7 @@
     box-sizing: border-box;
     padding: 0px;
     margin: 0;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 
@@ -17,12 +17,20 @@
 
 /* MAIN HTML ELEMENT STYLING */
 header {
-    width: 100%;
+    height: 200px;
+    width: 100vw;
     padding: 20px 40px 20px 40px;
 }
 
 body {
     background-color: var(--primary-color);
+    padding: 0;
+    margin: 0;
+    /* display: flex; */
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 header h3 {
@@ -30,8 +38,13 @@ header h3 {
     float: right;
 }
 
+body.correct {
+    background-color: green;
+}
 
-
+body.wrong {
+    background-color: red;
+}
 
 /* ELEMENT BY ID STYLING */
 #highScoresLink {
@@ -60,7 +73,8 @@ header h3 {
 #quizPrimary {
     text-align: center;
     display: flex;
-    height: 500px;
+    height: 800px;
+    /* max-width: 80%; */
     width: 100%;
     padding: 20px 20px 20px 20px;
     flex-wrap: wrap;
@@ -72,32 +86,47 @@ header h3 {
     text-align: center;
 }
 
-#startBtn {
-    font-size: 14px;
+#start-btn {
+    font-size: 1rem;
     background-color: var(--secondary-color);
     color: var(--primary-color);
+    border-radius: 10px;
     height: 40px;
     width: 100px;
-    border-radius: 10px;
-    border: hidden;
-    align-self: center;
+    padding: 5px 10px;
+    outline: none;
 }
-
-
 
 
 /* ELEMENT BY CLASS STYLING */
-.answerButtons {
-    list-style: none;
-    /* font-size: 14px;
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn {
     background-color: var(--secondary-color);
     color: var(--primary-color);
+    border-radius: 10px;
     height: 40px;
     width: 100px;
-    border-radius: 10px;
-    border: hidden;
-    align-items: flex-start; */
+    padding: 5px 10px;
+    outline: none;
 }
+
+.btn:hover {
+    border-color: black;
+}
+
+.hide {
+    display: none;
+}
+
+
+
+
 
 .textPrimary {
     width: 100%;

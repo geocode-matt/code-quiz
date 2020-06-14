@@ -54,7 +54,7 @@ var randomOrder
 var questionIndex
 var questionEl = document.getElementById("question");
 var answerButtonsEl = document.getElementById("answer-buttons");
-
+var score = 0;
 
 
 
@@ -82,6 +82,7 @@ function startQuiz() {
 }
 
 function nextQuestion() {
+    reset()
     showQuestion(randomOrder[questionIndex]);
 }
 
@@ -99,6 +100,12 @@ function showQuestion(question) {
     })
 }
 
+function reset () {
+    while (answerButtonsEl.firstChild) {
+        answerButtonsEl.removeChild(answerButtonsEl.firstChild)
+    }
+}
+
 function pickAnswer(e) {
     var selectedButton = e.target
     var correct = selectedButton.dataset.correct
@@ -106,16 +113,19 @@ function pickAnswer(e) {
     Array.from(answerButtonsEl.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+    if (correct) {
+        score++;
+    } else {
+    }
     if (randomOrder.length > questionIndex + 1) {
         questionIndex++
         nextQuestion()
     } else {
-        alert("QUIZ COMPLETE!")
+        allDone();
+        // alert('You scored ' + ((score/5) *100) + '%');
     }
 
 }
-
-
 
 function setStatusClass(element, correct) {
     clearStatusClass(element)
@@ -129,6 +139,19 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
     element.classList.remove('correct')
     element.classList.remove('wrong')
+}
+
+function allDone() {
+    answerButtonsEl.classList.add("hide");
+    question.classList.add("hide");
+    var allDoneText = document.createElement("h2");
+    var h2 = document.getElementById("h2");
+    allDoneText.textContent = "All Done!";
+    h2.appendChild(allDoneText);
+    var scoreText = document.createElement("h3");
+    var h3 = document.getElementById("h3");
+    scoreText.textContent = 'Your final score is ' + ((score/5) *100) + '%.';
+    h3.appendChild(scoreText);
 }
 
 

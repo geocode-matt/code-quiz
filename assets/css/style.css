@@ -38,13 +38,13 @@ header h3 {
     float: right;
 }
 
-body.correct {
+/* body.correct {
     background-color: green;
 }
 
 body.wrong {
     background-color: red;
-}
+} */
 
 /* ELEMENT BY ID STYLING */
 #highScoresLink {

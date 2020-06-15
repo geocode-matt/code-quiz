@@ -59,14 +59,23 @@ var score = 0;
 var initialsButton = document.createElement("button");
 var initialsBlank = document.createElement('input');
 var username = document.getElementById("initials-blank").value;
-
+var timer = 300;
+var startingScore = score;
+var allDoneText = document.createElement("h2");
+var h2 = document.getElementById("h2");
+var scoreText = document.createElement("h3");
+var h3 = document.getElementById("h3");
+var blank = document.getElementById("initials-blank");
+var button = document.getElementById("initials-btn");
+var initialsText = document.createElement("label");
+var label = document.getElementById("initials-label");
 
 
 
 
 // FUNCTIONS
 function startQuiz() {
-    var timer = 300;
+    
     var timerInt = setInterval(function() {
         var timerEl = document.getElementById("timer");
         timerEl.textContent = timer;
@@ -121,7 +130,7 @@ function pickAnswer(e) {
     if (correct) {
         score++;
     } else {
-        timerEl = timer - 10;
+        timer = timer - 10;
         timerEl.textContent = timer;
     }
     if (randomOrder.length > questionIndex + 1) {
@@ -152,35 +161,94 @@ function allDone() {
     answerButtonsEl.classList.add("hide");
     question.classList.add("hide");
     
-    var allDoneText = document.createElement("h2");
-    var h2 = document.getElementById("h2");
     allDoneText.textContent = "All Done!";
     h2.appendChild(allDoneText);
     
-    var scoreText = document.createElement("h3");
-    var h3 = document.getElementById("h3");
     scoreText.textContent = 'Your final score is ' + ((score/5) *100) + '%.';
     h3.appendChild(scoreText);
 
-    var blank = document.getElementById("initials-blank");
     blank.appendChild(initialsBlank);
     initialsBlank.setAttribute("style", "display: inline-block;")
+    blank.classList.remove("hide");
 
-    var button = document.getElementById("initials-btn");
     button.appendChild(initialsButton);
     initialsButton.textContent = "Submit";
     initialsButton.setAttribute("style", "float: right;")
 
-    var initialsText = document.createElement("label");
-    var label = document.getElementById("initials-label");
     label.appendChild(initialsText);
-    initialsText.textContent = "Enter Intiails:";
+    initialsText.textContent = "Enter Intials:";
 }
 
 function pushHighScores() {
+    if (localStorage.length === 0) {
     localStorage.setItem('username', initialsBlank.value);
-    localStorage.setItem('score', score/5*100 + '%');
+    localStorage.setItem('score', score);      
+    } else if (score > startingScore) {
+        alert('new high score of ' + score/5*100 + '!');
+        localStorage.setItem('username', initialsBlank.value);
+        localStorage.setItem('score', score);
+    } else {
+        alert('you need to do better!!');
+    }
+    highScores();
 }
+    
+function highScores() {
+    // hide components from previous screen
+    h2.classList.add("hide");
+    h3.classList.add("hide");
+    blank.classList.add("hide");
+    button.classList.add("hide");
+    label.classList.add("hide");
+    // add dynamic elements
+    
+    
+    // var allDoneText = document.createElement("h2");
+    // var h2 = document.getElementById("h2");
+    // allDoneText.textContent = "All Done!";
+    // h2.appendChild(allDoneText);
+    
+    // var scoreText = document.createElement("h3");
+    // var h3 = document.getElementById("h3");
+    // scoreText.textContent = 'Your final score is ' + ((score/5) *100) + '%.';
+    // h3.appendChild(scoreText);
+
+    // var blank = document.getElementById("initials-blank");
+    // blank.appendChild(initialsBlank);
+    // initialsBlank.setAttribute("style", "display: inline-block;")
+    // blank.classList.remove("hide");
+
+    // var button = document.getElementById("initials-btn");
+    // button.appendChild(initialsButton);
+    // initialsButton.textContent = "Submit";
+    // initialsButton.setAttribute("style", "float: right;")
+
+    // var initialsText = document.createElement("label");
+    // var label = document.getElementById("initials-label");
+    // label.appendChild(initialsText);
+    // initialsText.textContent = "Enter Intials:";
+}
+
+//     console.log(initialScore);
+//     console.log(newScore);
+
+//     if (newScore > initialScore) {
+//         alert('new high score of' + score/5*100 + '!');
+//         localStorage.setItem('username', initialsBlank.value);
+//         localStorage.setItem('score', score);
+//     } else {
+//         alert('you need to do better!!');
+//     }
+// }
+
+// function renderLastRegistered() {
+//     // Fill in code here to retrieve the last email and password.
+//     // If they are null, return early from this function
+//     // Else set the text of the userEmailSpan and userPasswordSpan 
+//     // to the corresponding values form local storgage
+//     userEmailSpan.textContent = localStorage.getItem('email');
+//     userPasswordSpan.textContent = localStorage.getItem('password');
+//   }
 
 
 //     var firstQuestion = function() {

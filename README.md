@@ -15,7 +15,7 @@ This page is fully accessible.
 
 ## Screenshot
 
-Here is a screenshot of my password generator page:
+Here is a screenshot of my coding quiz application page:
 <img src="./assets/images/screenshot.png">
 
 

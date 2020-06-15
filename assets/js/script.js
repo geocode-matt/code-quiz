@@ -69,7 +69,16 @@ var blank = document.getElementById("initials-blank");
 var button = document.getElementById("initials-btn");
 var initialsText = document.createElement("label");
 var label = document.getElementById("initials-label");
-
+var h2Hs = document.createElement("h2");
+var h2HighScore = document.getElementById("h2-hs");
+var h3HighScore = document.getElementById("h3-hs");
+var h3Hs = document.createElement("h3");
+var h2Hs = document.createElement("h2");
+var buttonHsGoBack = document.createElement("go-back");
+var buttonHsClearScores = document.createElement("clear-scores");
+var storedScore = localStorage.getItem('score');
+var btnGoBack = document.createElement("go-back")
+var btnClearHs = document.createElement("clear-scores")
 
 
 
@@ -181,11 +190,11 @@ function allDone() {
 
 function pushHighScores() {
     if (localStorage.length === 0) {
-    localStorage.setItem('username', initialsBlank.value);
+    localStorage.setItem('username', blank.value);
     localStorage.setItem('score', score);      
     } else if (score > startingScore) {
         alert('new high score of ' + score/5*100 + '!');
-        localStorage.setItem('username', initialsBlank.value);
+        localStorage.setItem('username', blank.value);
         localStorage.setItem('score', score);
     } else {
         alert('you need to do better!!');
@@ -201,83 +210,33 @@ function highScores() {
     button.classList.add("hide");
     label.classList.add("hide");
     // add dynamic elements
-    
-    
-    // var allDoneText = document.createElement("h2");
-    // var h2 = document.getElementById("h2");
-    // allDoneText.textContent = "All Done!";
-    // h2.appendChild(allDoneText);
-    
-    // var scoreText = document.createElement("h3");
-    // var h3 = document.getElementById("h3");
-    // scoreText.textContent = 'Your final score is ' + ((score/5) *100) + '%.';
-    // h3.appendChild(scoreText);
-
-    // var blank = document.getElementById("initials-blank");
-    // blank.appendChild(initialsBlank);
-    // initialsBlank.setAttribute("style", "display: inline-block;")
-    // blank.classList.remove("hide");
-
-    // var button = document.getElementById("initials-btn");
-    // button.appendChild(initialsButton);
-    // initialsButton.textContent = "Submit";
-    // initialsButton.setAttribute("style", "float: right;")
-
-    // var initialsText = document.createElement("label");
-    // var label = document.getElementById("initials-label");
-    // label.appendChild(initialsText);
-    // initialsText.textContent = "Enter Intials:";
+    h2Hs.textContent = "High Scores";
+    h2HighScore.appendChild(h2Hs);
+    h3Hs.textContent = JSON.stringify(localStorage.getItem('username')) + ' - ' + storedScore/5*100 + '%';
+    h3HighScore.appendChild(h3Hs);
+    buttonHsGoBack.textContent = "Go Back";
+    btnGoBack.appendChild(buttonHsGoBack);
 }
 
-//     console.log(initialScore);
-//     console.log(newScore);
-
-//     if (newScore > initialScore) {
-//         alert('new high score of' + score/5*100 + '!');
-//         localStorage.setItem('username', initialsBlank.value);
-//         localStorage.setItem('score', score);
-//     } else {
-//         alert('you need to do better!!');
-//     }
-// }
-
-// function renderLastRegistered() {
-//     // Fill in code here to retrieve the last email and password.
-//     // If they are null, return early from this function
-//     // Else set the text of the userEmailSpan and userPasswordSpan 
-//     // to the corresponding values form local storgage
-//     userEmailSpan.textContent = localStorage.getItem('email');
-//     userPasswordSpan.textContent = localStorage.getItem('password');
-//   }
-
-
-//     var firstQuestion = function() {
-//         document.querySelector(".textPrimary").innerHTML = "A very useful tool used during development and debugging for printing content to the debugger is:";
-//         document.querySelector(".textSecondary").innerHTML = "";
-
-//         let firstQuestionAnswers = [
-//             '1. JavaScript',
-//             '2. terminal/bash',
-//             '3. for loops',
-//             '4. console.log'
-//         ],
-//         ul = document.createElement('ul');
-//         li = document.createElement('li');
-//         ul.setAttribute("style", "list-style: none;");
-//         ul.appendChild(li);
-//         li.setAttribute("style", "list-style: none;");
-//     document.getElementById('quizPrimary').appendChild(ul);
-    
-//     firstQuestionAnswers.forEach(function (firstQuestionAnswers) {
-//         let button = document.createElement('button');
-//         li.appendChild(button);
-//         button.setAttribute("style", "background-color: var(--secondary-color); color: var(--primary-color); border-radius: 10px; border: hiddin; height: 40px; width: 100px; font-size: 14px;")
-//         button.innerHTML += firstQuestionAnswers;
-//     });
-
-// }
-
-
+function highScoresFromMain() {
+    event.preventDefault();
+      // hide components from previous screen
+      startBtnEl.classList.add('hide');
+      textPrimaryEl.classList.add('hide');
+      textSecondaryEl.classList.add('hide');
+      h2.classList.add("hide");
+      h3.classList.add("hide");
+      blank.classList.add("hide");
+      button.classList.add("hide");
+      label.classList.add("hide");
+      // add dynamic elements
+      h2Hs.textContent = "High Scores";
+      h2HighScore.appendChild(h2Hs);
+      h3Hs.textContent = JSON.stringify(localStorage.getItem('username')) + ' - ' + storedScore/5*100 + '%';
+      h3HighScore.appendChild(h3Hs);
+      buttonHsGoBack.textContent = "Go Back";
+      btnGoBack.appendChild(buttonHsGoBack);  
+}
 
 
 

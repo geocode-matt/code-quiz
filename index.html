@@ -9,7 +9,7 @@
 <body>
 
     <header>
-        <h3 id="highScoresLink">View High Scores</h3>
+        <a href='' id="highScoresLink" onclick="highScoresFromMain();">View High Scores</a>
         <h3>Time: <span id="timer"></span></h3>
     </header>
 
@@ -18,12 +18,25 @@
             <h2 class="textPrimary">Coding Quiz Challenge</h2>
             <!-- <br><br> -->
             <h2 id="h2"></h2>
+            <br>
             <h3 id="h3"></h3>
+            <br>
             <div class="initials-entry" class="hide">
                 <input type="text" id="initials-blank" class="hide">
                 <label id="initials-label"></label>
                 <button id="initials-btn"></button>
             </div>
+
+            <h2 id="h2-hs"></h2>
+            <br>
+            <h3 id="h3-hs"></h3>
+            <br>
+            <div class="high-scores" class="hide">
+                <p><span id="storedScore"></span></p>
+                <button id="go-back"></button>
+                <button id="clear-scores"></button>
+              </div>
+
             <p class="textSecondary">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
             <br><br>
             <button id="start-btn">Start Quiz</button>
